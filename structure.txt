@@ -1,0 +1,55 @@
+.
+├── ./bun.lock
+├── ./data.json
+├── ./eslint.config.js
+├── ./.gitignore
+├── ./index.html
+├── ./package.json
+├── ./postcss.config.js
+├── ./preview.jpg
+├── ./public
+│   └── ./public/vite.svg
+├── ./README.md
+├── ./README-template.md
+├── ./src
+│   ├── ./src/App.css
+│   ├── ./src/App.tsx
+│   ├── ./src/assets
+│   │   ├── ./src/assets/fonts
+│   │   │   └── ./src/assets/fonts/Sora
+│   │   │       ├── ./src/assets/fonts/Sora/OFL.txt
+│   │   │       ├── ./src/assets/fonts/Sora/README.txt
+│   │   │       ├── ./src/assets/fonts/Sora/Sora-VariableFont_wght.ttf
+│   │   │       └── ./src/assets/fonts/Sora/static
+│   │   │           ├── ./src/assets/fonts/Sora/static/Sora-Bold.ttf
+│   │   │           ├── ./src/assets/fonts/Sora/static/Sora-Regular.ttf
+│   │   │           └── ./src/assets/fonts/Sora/static/Sora-SemiBold.ttf
+│   │   └── ./src/assets/images
+│   │       ├── ./src/assets/images/favicon-32x32.png
+│   │       ├── ./src/assets/images/icon-completed.svg
+│   │       ├── ./src/assets/images/icon-down-arrow.svg
+│   │       ├── ./src/assets/images/icon-new-pb.svg
+│   │       ├── ./src/assets/images/icon-personal-best.svg
+│   │       ├── ./src/assets/images/icon-restart.svg
+│   │       ├── ./src/assets/images/logo-large.svg
+│   │       ├── ./src/assets/images/logo-small.svg
+│   │       ├── ./src/assets/images/pattern-confetti.svg
+│   │       ├── ./src/assets/images/pattern-star-1.svg
+│   │       └── ./src/assets/images/pattern-star-2.svg
+│   ├── ./src/components
+│   │   └── ./src/components/TestComponent
+│   │       ├── ./src/components/TestComponent/index.ts
+│   │       ├── ./src/components/TestComponent/TestComponent.module.css
+│   │       └── ./src/components/TestComponent/TestComponent.tsx
+│   ├── ./src/index.css
+│   ├── ./src/main.tsx
+│   └── ./src/styles
+│       └── ./src/styles/media.css
+├── ./structure.txt
+├── ./style-guide.md
+├── ./tsconfig.app.json
+├── ./tsconfig.json
+├── ./tsconfig.node.json
+└── ./vite.config.ts
+
+11 directories, 42 files
