@@ -1,5 +1,11 @@
+import Header from "../components/Header";
+
 function Home() {
-  return <div>Home Page: Phlebas the Phoenician</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 }
 
 export default Home;
