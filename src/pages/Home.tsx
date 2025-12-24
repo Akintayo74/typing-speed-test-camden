@@ -1,10 +1,19 @@
 import Header from "../components/Header";
+import Navbar from "../components/Navbar";
+import PageContainer from "../components/PageContainer";
+import Spacer from "../components/Spacer";
 
 function Home() {
   return (
-    <div>
+    <PageContainer>
+
       <Header />
-    </div>
+
+      <Spacer gap={400}>
+        <Navbar />
+      </Spacer>
+      
+    </PageContainer>
   );
 }
 

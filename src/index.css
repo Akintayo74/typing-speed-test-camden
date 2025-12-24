@@ -10,7 +10,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --spacing-200: 16px;
+  --spacing-400: 32px;
+
   --colors-neutral-900: hsla(0, 0%, 7%, 1);
+  --colors-neutral-400: hsla(240, 1%, 59%, 1);
   --colors-neutral-0: hsla(0, 0%, 100%, 1);
 }
 
@@ -23,7 +27,7 @@ body {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: var(--colors-neutral-400);
     background-color: var(--colors-neutral-900);
   }
 
