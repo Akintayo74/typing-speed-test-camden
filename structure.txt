@@ -4,6 +4,8 @@
 ├── ./eslint.config.js
 ├── ./.gitignore
 ├── ./index.html
+├── ./.ladle
+│   └── ./.ladle/components.tsx
 ├── ./package.json
 ├── ./postcss.config.js
 ├── ./preview.jpg
@@ -12,7 +14,6 @@
 ├── ./README.md
 ├── ./README-template.md
 ├── ./src
-│   ├── ./src/App.css
 │   ├── ./src/App.tsx
 │   ├── ./src/assets
 │   │   ├── ./src/assets/fonts
@@ -37,12 +38,19 @@
 │   │       ├── ./src/assets/images/pattern-star-1.svg
 │   │       └── ./src/assets/images/pattern-star-2.svg
 │   ├── ./src/components
-│   │   └── ./src/components/TestComponent
-│   │       ├── ./src/components/TestComponent/index.ts
-│   │       ├── ./src/components/TestComponent/TestComponent.module.css
-│   │       └── ./src/components/TestComponent/TestComponent.tsx
+│   │   ├── ./src/components/Header
+│   │   │   ├── ./src/components/Header/Header.module.css
+│   │   │   ├── ./src/components/Header/Header.stories.tsx
+│   │   │   ├── ./src/components/Header/Header.tsx
+│   │   │   └── ./src/components/Header/index.ts
+│   │   └── ./src/components/PageContainer
+│   │       ├── ./src/components/PageContainer/index.ts
+│   │       ├── ./src/components/PageContainer/PageContainer.module.css
+│   │       └── ./src/components/PageContainer/PageContainer.tsx
 │   ├── ./src/index.css
 │   ├── ./src/main.tsx
+│   ├── ./src/pages
+│   │   └── ./src/pages/Home.tsx
 │   └── ./src/styles
 │       └── ./src/styles/media.css
 ├── ./structure.txt
@@ -52,4 +60,4 @@
 ├── ./tsconfig.node.json
 └── ./vite.config.ts
 
-11 directories, 42 files
+14 directories, 47 files
