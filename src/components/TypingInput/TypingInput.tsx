@@ -1,7 +1,13 @@
 import * as React from 'react';
 import styles from './TypingInput.module.css';
 
-function TypingInput({ value, handleInput, status}) {
+type TypingInputProps = {
+  value: string;
+  handleInput: (input: string) => void;
+  status: 'idle' | 'running' | 'finished';
+}
+
+function TypingInput({ value, handleInput, status}: TypingInputProps) {
   return (
     <input
       type='text'
