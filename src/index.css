@@ -14,14 +14,18 @@
   --spacing-400: 32px;
 
   --colors-neutral-900: hsla(0, 0%, 7%, 1);
+  --colors-neutral-700: hsla(0, 0%, 23%, 1);
   --colors-neutral-400: hsla(240, 1%, 59%, 1);
   --colors-neutral-0: hsla(0, 0%, 100%, 1);
+
+  --font-normal: 16px;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  font-size: var(--font-normal);
 }
 
 

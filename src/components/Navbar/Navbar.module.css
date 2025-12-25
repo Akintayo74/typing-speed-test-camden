@@ -5,3 +5,19 @@
     justify-content: space-between;
     
 }
+
+.navHeadings {
+    display: flex;
+    flex-direction: column;
+}
+
+.navHeadings span {
+    color: var(--colors-neutral-0);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.verticalLine {
+    border-left: 1px solid var(--colors-neutral-700);
+
+}
