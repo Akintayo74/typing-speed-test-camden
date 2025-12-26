@@ -9,8 +9,11 @@ type TextDisplayProps = {
 
 function TextDisplay({ targetText, userInput, onFocus }: TextDisplayProps) {
   const chars = targetText.split("");
+
+
   return (
     <div className={styles.container} onClick={onFocus}>
+
       {chars.map((char: string, index: number) => {
         let status = styles.pending;
 
@@ -27,6 +30,7 @@ function TextDisplay({ targetText, userInput, onFocus }: TextDisplayProps) {
           </span>
         );
       })}
+      
     </div>
   );
 }

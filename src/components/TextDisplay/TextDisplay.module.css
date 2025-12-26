@@ -1,13 +1,24 @@
 @import '../../styles/media.css';
 
+.container {
+    cursor: text;
+
+}
+
+
 .pending {
     color: grey;
 }
 
 .correct {
-    color: green;
+    color: var(--colors-green-500);
 }
 
 .incorrect {
-    color: red;
+    color: var(--colors-red-500);
+    text-decoration: underline;
+}
+
+.current {
+    color: blue;
 }

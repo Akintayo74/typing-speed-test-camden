@@ -18,7 +18,16 @@
   --colors-neutral-400: hsla(240, 1%, 59%, 1);
   --colors-neutral-0: hsla(0, 0%, 100%, 1);
 
+  --colors-green-500: hsla(140, 63%, 57%, 1);
+  --colors-red-500: hsla(354, 63%, 57%, 1);
+
   --font-normal: 16px;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('src/assets/fonts/Sora/Sora-Variable-Font.woff2');
+  font-weight: 100 900;
 }
 
 body {
@@ -26,6 +35,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-size: var(--font-normal);
+
+  font-family: 'Sora';
 }
 
 

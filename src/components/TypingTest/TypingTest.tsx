@@ -6,6 +6,8 @@ import TextDisplay from '../TextDisplay';
 import typingData from '../../../data.json';
 import { sample } from '../../utils';
 
+
+
 function TypingTest() {
   const [targetText, setTargetText] = React.useState(() => {
     const randomExercise = sample(typingData.easy);
