@@ -1,2 +1,6 @@
 @import '../../styles/media.css';
 
+.hiddenInput {
+    position: absolute;
+    opacity: 0;
+}

@@ -3,8 +3,14 @@ import styles from './TypingTest.module.css';
 import TypingInput from '../TypingInput';
 import TextDisplay from '../TextDisplay';
 
+import typingData from '../../../data.json';
+import { sample } from '../../utils';
+
 function TypingTest() {
-  const [targetText, setTargetText] = React.useState('Hello world');
+  const [targetText, setTargetText] = React.useState(() => {
+    const randomExercise = sample(typingData.easy);
+    return randomExercise.text;
+  });
 
   const [userInput, setUserInput] = React.useState('');
 
@@ -12,8 +18,7 @@ function TypingTest() {
 
   const [startTime, setStartTime] = React.useState<number | null>(null);
 
-  console.log(targetText)
-  console.log(userInput)
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   function handleInput(input: string) {
     if(!startTime && input.length > 0) {
@@ -33,19 +38,25 @@ function TypingTest() {
       setStatus('finished');
     }
   }
-  
+
+  function focusInput() {
+    inputRef.current?.focus();
+  }
+
   return (
     <>
+
+      <TextDisplay
+        targetText={targetText}
+        userInput={userInput}
+        onFocus={focusInput}
+      />
 
       <TypingInput
         value={userInput}
         handleInput={handleInput}
         status={status}
-      />
-
-      <TextDisplay
-        targetText={targetText}
-        userInput={userInput}
+        ref={inputRef}
       />
 
       {/* {status === 'finished' && (
