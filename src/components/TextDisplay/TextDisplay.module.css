@@ -3,11 +3,14 @@
 .container {
     cursor: text;
 
+    @media(--laptop) {
+        font-size: 40px;
+    }
 }
 
 
 .pending {
-    color: grey;
+    
 }
 
 .correct {
@@ -20,5 +23,6 @@
 }
 
 .current {
-    color: blue;
+    background-color: var(--colors-neutral-500);
+    border-radius: 4px;
 }

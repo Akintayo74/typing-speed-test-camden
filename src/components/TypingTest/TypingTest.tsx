@@ -10,7 +10,7 @@ import { sample } from '../../utils';
 
 function TypingTest() {
   const [targetText, setTargetText] = React.useState(() => {
-    const randomExercise = sample(typingData.easy);
+    const randomExercise = sample(typingData.medium);
     return randomExercise.text;
   });
 
