@@ -1,7 +1,16 @@
 import * as React from 'react';
 import styles from './Navbar.module.css';
+import format from 'date-fns/format'
 
 function Navbar() {
+  const [startTime, setStartTime] = React.useState<number | null | Date>(new Date());
+
+  React.useEffect(() => {
+    const intervalId = setInterval(() => {
+      setStartTime(new Date());
+    }, 1000)
+    return () => clearInterval(intervalId)
+  }, [])
   return (
     <div className={styles.container}>
       <div className={styles.navHeadings}>
@@ -20,7 +29,7 @@ function Navbar() {
 
       <div className={styles.navHeadings}>
         Time:
-        <span>0.60</span>
+        <span>{format(startTime, 'hh:mm:ss a')}</span>
       </div>
 
     </div>

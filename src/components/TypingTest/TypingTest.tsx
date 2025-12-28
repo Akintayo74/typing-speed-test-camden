@@ -24,7 +24,8 @@ function TypingTest() {
 
   function handleInput(input: string) {
     if(!startTime && input.length > 0) {
-      setStartTime(Date.now());
+      // const currentTime = Date.now;
+      // setStartTime(currentTime.toLocaleTimeString());
       setStatus('running');
     }
     console.log(startTime)
