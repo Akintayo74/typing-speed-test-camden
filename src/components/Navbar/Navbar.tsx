@@ -1,39 +1,52 @@
-import * as React from 'react';
-import styles from './Navbar.module.css';
-import format from 'date-fns/format'
+import * as React from "react";
+import styles from "./Navbar.module.css";
+import { formatTime } from "../../helpers/format.helpers";
+import { useTypingStore } from "../../store/use-typing-store";
 
 function Navbar() {
-  const [startTime, setStartTime] = React.useState<number | null | Date>(new Date());
+  const wpm = useTypingStore((state) => state.wpm);
+  const accuracy = useTypingStore((state) => state.accuracy);
+  const elapsedTime = useTypingStore((state) => state.elapsedTime);
 
-  React.useEffect(() => {
-    const intervalId = setInterval(() => {
-      setStartTime(new Date());
-    }, 1000)
-    return () => clearInterval(intervalId)
-  }, [])
   return (
     <div className={styles.container}>
-      <div className={styles.navHeadings}>
-        WPM:
-        <span>0</span>
+      <div className={styles.wrapper}>
+        <div className={styles.navHeadings}>
+          WPM:
+          <span>{wpm}</span>
+        </div>
+
+        <div className={styles.verticalLine}></div>
+
+        <div className={styles.navHeadings}>
+          Accuracy:
+          <span>{accuracy}%</span>
+        </div>
+
+        <div className={styles.verticalLine}></div>
+
+        <div className={styles.navHeadings}>
+          Time:
+          <span>{formatTime(elapsedTime)}</span>
+        </div>
       </div>
 
-      <div className={styles.verticalLine}></div>
+      <div className={styles.wrapper}>
+        <div className={styles.navHeadings}>
+          Difficulty:
+          <button>Easy</button>
+          <button>Medium</button>
+          <button>Hard</button>
+        </div>
 
-      <div className={styles.navHeadings}>
-        Accuracy:
-        <span>100%</span>
+        <div className={styles.navHeadings}>
+          Mode:
+          <button>Timed(60s)</button>
+          <button>Passage</button>
+        </div>
       </div>
-
-      <div className={styles.verticalLine}></div>
-
-      <div className={styles.navHeadings}>
-        Time:
-        <span>{format(startTime, 'hh:mm:ss a')}</span>
-      </div>
-
     </div>
-  )
+  );
 }
 
 export default Navbar;

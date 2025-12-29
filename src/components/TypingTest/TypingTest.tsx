@@ -3,29 +3,34 @@ import styles from './TypingTest.module.css';
 import TypingInput from '../TypingInput';
 import TextDisplay from '../TextDisplay';
 
+import useTime from '../../hooks/use-time';
+import { useTypingStore } from '../../store/use-typing-store';
+
 import typingData from '../../../data.json';
 import { sample } from '../../utils';
 
 
 
 function TypingTest() {
-  const [targetText, setTargetText] = React.useState(() => {
+  useTime();
+  const status = useTypingStore((state) => state.status);
+  const setStatus = useTypingStore((state) => state.setStatus);
+  const startTime = useTypingStore((state) => state.startTime);
+  const setStartTime = useTypingStore((state) => state.setStartTime);
+  const setElapsedTime = useTypingStore((state) => state.setElapsedTime)
+
+  const [targetText] = React.useState(() => {
     const randomExercise = sample(typingData.medium);
     return randomExercise.text;
   });
 
   const [userInput, setUserInput] = React.useState('');
-
-  const [status, setStatus] = React.useState<'idle'|'finished'|'running'>('idle');
-
-  const [startTime, setStartTime] = React.useState<number | null>(null);
-
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   function handleInput(input: string) {
     if(!startTime && input.length > 0) {
-      // const currentTime = Date.now;
-      // setStartTime(currentTime.toLocaleTimeString());
+      setStartTime(Date.now() - 1000); //Illusion for immediate visual feedback
+      setElapsedTime(1); //Illusion for immediate visual feedback
       setStatus('running');
     }
     console.log(startTime)
@@ -35,7 +40,6 @@ function TypingTest() {
     }
 
     setUserInput(input);
-
 
     if(input.length === targetText.length) {
       setStatus('finished');

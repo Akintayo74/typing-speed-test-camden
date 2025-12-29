@@ -6,9 +6,23 @@
     
 }
 
+.wrapper {
+
+    @media(--laptop) {
+        display: flex;
+        gap: 20px;
+    }
+}
+
 .navHeadings {
     display: flex;
     flex-direction: column;
+
+    @media(--laptop) {
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+    }
 }
 
 .navHeadings span {
