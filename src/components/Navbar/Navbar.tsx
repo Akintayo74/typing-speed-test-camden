@@ -1,4 +1,4 @@
-import * as React from "react";
+// import * as React from "react";
 import styles from "./Navbar.module.css";
 import { formatTime } from "../../helpers/format.helpers";
 import { useTypingStore } from "../../store/use-typing-store";
@@ -7,6 +7,12 @@ function Navbar() {
   const wpm = useTypingStore((state) => state.wpm);
   const accuracy = useTypingStore((state) => state.accuracy);
   const elapsedTime = useTypingStore((state) => state.elapsedTime);
+  const mode = useTypingStore((state) => state.mode);
+  const setMode = useTypingStore((state) => state.setMode);
+
+  const displayTime = mode === 'timed' 
+    ? Math.max(0,60 - elapsedTime) 
+    : elapsedTime;
 
   return (
     <div className={styles.container}>
@@ -27,7 +33,7 @@ function Navbar() {
 
         <div className={styles.navHeadings}>
           Time:
-          <span>{formatTime(elapsedTime)}</span>
+          <span>{formatTime(displayTime)}</span>
         </div>
       </div>
 
@@ -41,8 +47,12 @@ function Navbar() {
 
         <div className={styles.navHeadings}>
           Mode:
-          <button>Timed(60s)</button>
-          <button>Passage</button>
+          <button onClick={() => setMode('timed')}>
+            Timed(60s)
+          </button>
+          <button onClick={() => setMode('passage')}>
+            Passage
+          </button>
         </div>
       </div>
     </div>

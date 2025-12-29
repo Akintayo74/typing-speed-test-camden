@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './TypingTest.module.css';
+// import styles from './TypingTest.module.css';
 import TypingInput from '../TypingInput';
 import TextDisplay from '../TextDisplay';
 
@@ -28,6 +28,7 @@ function TypingTest() {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   function handleInput(input: string) {
+    //User starts typing
     if(!startTime && input.length > 0) {
       setStartTime(Date.now() - 1000); //Illusion for immediate visual feedback
       setElapsedTime(1); //Illusion for immediate visual feedback
