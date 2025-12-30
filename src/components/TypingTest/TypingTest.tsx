@@ -16,8 +16,11 @@ function TypingTest() {
   const status = useTypingStore((state) => state.status);
   const setStatus = useTypingStore((state) => state.setStatus);
   const startTime = useTypingStore((state) => state.startTime);
+  const elapsedTime = useTypingStore((state) => state.elapsedTime);
   const setStartTime = useTypingStore((state) => state.setStartTime);
-  const setElapsedTime = useTypingStore((state) => state.setElapsedTime)
+  const setElapsedTime = useTypingStore((state) => state.setElapsedTime);
+  const setWpm = useTypingStore((state) => state.setWpm);
+  const setAccuracy = useTypingStore((state) => state.setAccuracy);
 
   const [targetText] = React.useState(() => {
     const randomExercise = sample(typingData.medium);
@@ -25,7 +28,30 @@ function TypingTest() {
   });
 
   const [userInput, setUserInput] = React.useState('');
+  const [totalErrors, setTotalErrors] = React.useState(0);
   const inputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    if(userInput.length === 0 || elapsedTime === 0) {
+      setWpm(0);
+      setAccuracy(100);
+      return;
+    }
+
+    const wpm = Math.round((userInput.length * 60) / (5 * elapsedTime));
+
+    let correctCount = 0;
+
+    for(let i = 0; i < userInput.length; i++) {
+      if(userInput[i] === targetText[i]) {
+        correctCount++;
+      }
+    }
+    const accuracy = Math.round((correctCount/userInput.length) * 100)
+
+    setWpm(wpm);
+    setAccuracy(accuracy);
+  }, [userInput, elapsedTime, targetText])
 
   function handleInput(input: string) {
     //User starts typing
@@ -34,7 +60,13 @@ function TypingTest() {
       setElapsedTime(1); //Illusion for immediate visual feedback
       setStatus('running');
     }
-    console.log(startTime)
+
+    if(input.length > userInput.length) {
+      const newIndex = input.length -1; 
+      if(input[newIndex] !== targetText[newIndex]) {
+        setTotalErrors(prev => prev + 1);
+      }
+    }
 
     if(input.length > targetText.length) {
       return;

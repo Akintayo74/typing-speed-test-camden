@@ -8,6 +8,7 @@ type TypingState = {
   startTime: number | null;
   mode: "timed" | "passage";
   difficulty: "easy" | "medium" | "hard";
+  totalErrors: number;
 
   setElapsedTime: (time: number) => void;
   setWpm: (wpm: number) => void;
@@ -16,6 +17,7 @@ type TypingState = {
   setStartTime: (time: number | null) => void;
   setMode: (mode: "timed" | "passage") => void;
   setDifficulty: (difficulty: "easy" | "medium" | "hard") => void;
+  setTotalErrors: (count: number) => void;
   reset: () => void;
 };
 
@@ -28,6 +30,7 @@ export const useTypingStore = create<TypingState>((set) => ({
     startTime: null,
     mode: "timed",
     difficulty: "medium",
+    totalErrors: 0,
 
     //Actions
     setElapsedTime: (time) => set({elapsedTime: time}),
@@ -37,6 +40,7 @@ export const useTypingStore = create<TypingState>((set) => ({
     setStartTime: (time) => set({startTime: time}),
     setMode: (mode) => set({mode}),
     setDifficulty: (difficulty) => set({difficulty}),
+    setTotalErrors: (count) => set({totalErrors: count}),
 
     //Reset to initial state
     reset: () => set({
@@ -45,5 +49,6 @@ export const useTypingStore = create<TypingState>((set) => ({
         accuracy: 100,
         status: 'idle',
         startTime: null,
+        totalErrors: 0,
     })
 }))
