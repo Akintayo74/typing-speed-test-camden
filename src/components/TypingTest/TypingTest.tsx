@@ -8,6 +8,7 @@ import { useTypingStore } from '../../store/use-typing-store';
 
 import typingData from '../../../data.json';
 import { sample } from '../../utils';
+import StartScreen from '../StartScreen';
 
 
 
@@ -83,27 +84,61 @@ function TypingTest() {
     inputRef.current?.focus();
   }
 
-  return (
-    <>
+  if(status === 'idle') {
+    return (
+      <>
+        <StartScreen>
+          <TextDisplay
+            targetText={targetText}
+            userInput={userInput}
+            onFocus={focusInput}
+          />
+        </StartScreen>
+      </>
+    )
+  }
 
-      <TextDisplay
-        targetText={targetText}
-        userInput={userInput}
-        onFocus={focusInput}
-      />
+  if (status === 'running') {
+    return (
+      <>
+        <TextDisplay
+            targetText={targetText}
+            userInput={userInput}
+            onFocus={focusInput}
+        />
 
-      <TypingInput
-        value={userInput}
-        handleInput={handleInput}
-        status={status}
-        ref={inputRef}
-      />
+        <TypingInput
+          value={userInput}
+          handleInput={handleInput}
+          status={status}
+          ref={inputRef}
+        />
+      </>
+    )
+  }
 
-      {/* {status === 'finished' && (
-        <Results />
-      )} */}
-    </>
-  )
+  // return (
+  //   <>
+
+  //     {/* <TextDisplay
+  //       targetText={targetText}
+  //       userInput={userInput}
+  //       onFocus={focusInput}
+  //     />
+
+  //     <TypingInput
+  //       value={userInput}
+  //       handleInput={handleInput}
+  //       status={status}
+  //       ref={inputRef}
+  //     /> */}
+
+  //     {/* {status === 'finished' && (
+  //       <Results />
+  //     )} */}
+  //   </>
+  // )
+  return null;
 }
 
 export default TypingTest;
