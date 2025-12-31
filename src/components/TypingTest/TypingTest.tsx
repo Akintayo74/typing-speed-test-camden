@@ -5,6 +5,7 @@ import TextDisplay from '../TextDisplay';
 
 import useTime from '../../hooks/use-time';
 import { useTypingStore } from '../../store/use-typing-store';
+import { useNavigate } from 'react-router-dom';
 
 import typingData from '../../../data.json';
 import { sample } from '../../utils';
@@ -14,6 +15,7 @@ import StartScreen from '../StartScreen';
 
 function TypingTest() {
   useTime();
+  const navigate = useNavigate();
   const status = useTypingStore((state) => state.status);
   const setStatus = useTypingStore((state) => state.setStatus);
   const startTime = useTypingStore((state) => state.startTime);
@@ -96,49 +98,30 @@ function TypingTest() {
         </StartScreen>
       </>
     )
+  } else if (status === 'running') {
+      return (
+        <>
+          <TextDisplay
+              targetText={targetText}
+              userInput={userInput}
+              onFocus={focusInput}
+          />
+
+          <TypingInput
+            value={userInput}
+            handleInput={handleInput}
+            status={status}
+            ref={inputRef}
+          />
+        </>
+      )
+  } else if (status === 'finished') {
+    navigate('/results');
+  } else {
+    return null;
   }
 
-  if (status === 'running') {
-    return (
-      <>
-        <TextDisplay
-            targetText={targetText}
-            userInput={userInput}
-            onFocus={focusInput}
-        />
-
-        <TypingInput
-          value={userInput}
-          handleInput={handleInput}
-          status={status}
-          ref={inputRef}
-        />
-      </>
-    )
-  }
-
-  // return (
-  //   <>
-
-  //     {/* <TextDisplay
-  //       targetText={targetText}
-  //       userInput={userInput}
-  //       onFocus={focusInput}
-  //     />
-
-  //     <TypingInput
-  //       value={userInput}
-  //       handleInput={handleInput}
-  //       status={status}
-  //       ref={inputRef}
-  //     /> */}
-
-  //     {/* {status === 'finished' && (
-  //       <Results />
-  //     )} */}
-  //   </>
-  // )
-  return null;
+  
 }
 
 export default TypingTest;
