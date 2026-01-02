@@ -18,6 +18,7 @@ type TypingState = {
   setMode: (mode: "timed" | "passage") => void;
   setDifficulty: (difficulty: "easy" | "medium" | "hard") => void;
   setTotalErrors: (count: number) => void;
+  incrementTotalErrors: () => void;
   reset: () => void;
 };
 
@@ -41,6 +42,9 @@ export const useTypingStore = create<TypingState>((set) => ({
     setMode: (mode) => set({mode}),
     setDifficulty: (difficulty) => set({difficulty}),
     setTotalErrors: (count) => set({totalErrors: count}),
+    incrementTotalErrors: () => set((state) => ({
+      totalErrors: state.totalErrors + 1
+    })),
 
     //Reset to initial state
     reset: () => set({
