@@ -9,10 +9,10 @@ function Navbar() {
   const elapsedTime = useTypingStore((state) => state.elapsedTime);
   const mode = useTypingStore((state) => state.mode);
   const setMode = useTypingStore((state) => state.setMode);
+  const setDifficulty = useTypingStore((state) => state.setDifficulty);
 
-  const displayTime = mode === 'timed' 
-    ? Math.max(0,60 - elapsedTime) 
-    : elapsedTime;
+  const displayTime =
+    mode === "timed" ? Math.max(0, 60 - elapsedTime) : elapsedTime;
 
   return (
     <div className={styles.container}>
@@ -40,19 +40,15 @@ function Navbar() {
       <div className={styles.wrapper}>
         <div className={styles.navHeadings}>
           Difficulty:
-          <button>Easy</button>
-          <button>Medium</button>
-          <button>Hard</button>
+          <button onClick={() => setDifficulty("easy")}>Easy</button>
+          <button onClick={() => setDifficulty("medium")}>Medium</button>
+          <button onClick={() => setDifficulty("hard")}>Hard</button>
         </div>
 
         <div className={styles.navHeadings}>
           Mode:
-          <button onClick={() => setMode('timed')}>
-            Timed(60s)
-          </button>
-          <button onClick={() => setMode('passage')}>
-            Passage
-          </button>
+          <button onClick={() => setMode("timed")}>Timed(60s)</button>
+          <button onClick={() => setMode("passage")}>Passage</button>
         </div>
       </div>
     </div>

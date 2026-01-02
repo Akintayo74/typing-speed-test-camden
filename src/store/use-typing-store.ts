@@ -30,7 +30,7 @@ export const useTypingStore = create<TypingState>((set) => ({
     status: "idle",
     startTime: null,
     mode: "timed",
-    difficulty: "medium",
+    difficulty: "easy",
     totalErrors: 0,
 
     //Actions
@@ -53,6 +53,7 @@ export const useTypingStore = create<TypingState>((set) => ({
         accuracy: 100,
         status: 'idle',
         startTime: null,
+        difficulty: 'easy',
         totalErrors: 0,
     })
 }))

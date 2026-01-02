@@ -22,11 +22,11 @@ function TypingTest() {
   const status = useTypingStore((state) => state.status);
   const startTime = useTypingStore((state) => state.startTime);
   const elapsedTime = useTypingStore((state) => state.elapsedTime);
-
-  const [targetText] = React.useState(() => {
-    const randomExercise = sample(typingData.medium);
+  const difficulty = useTypingStore((state) => state.difficulty);
+  const targetText = React.useMemo(() => {
+    const randomExercise = sample(typingData[difficulty]);
     return randomExercise.text;
-  });
+  }, [difficulty]);
 
   const [userInput, setUserInput] = React.useState("");
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -45,7 +45,7 @@ function TypingTest() {
       return;
     }
 
-    const wpm = calculateWpm(userInput.length, targetText);
+    const wpm = calculateWpm(userInput.length, elapsedTime);
     const accuracy = calculateAccuracy(userInput, targetText);
 
     setWpm(wpm);
